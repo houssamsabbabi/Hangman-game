@@ -1,0 +1,246 @@
+/* Colors used: Yellow-green (#BAFF39), dim grey (#6E6E6E), white (#FFFFFF) */
+
+* {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+header {
+  color: #baff39;
+  background-color: #6e6e6e;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}
+header h1 span {
+  display: inline-block;
+  color: #ffffff;
+  transform: rotate(20deg) translate(-10px, -10px);
+}
+@media (max-width: 480px){
+  header h1 {
+    font-size: 20px;
+  }
+}
+main .container {
+  width: 100%;
+  height: calc(100vh - 150px);
+  position: relative;
+}
+main .container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 100%;
+  height: 2px;
+  background-color: #6e6e6e;
+}
+main .container .hangman .gallow {
+  position: relative;
+  left: 5%;
+  top: 250px;
+  height: 4px;
+  width: 50px;
+  background-color: #6e6e6e;
+  display: none;
+}
+.container .hangman .gallow::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 200px;
+  width: 4px;
+  background-color: #6e6e6e;
+}
+.container .hangman .gallow::after {
+  content: "";
+  position: absolute;
+  bottom: 190px;
+  left: 50%;
+  height: 4px;
+  width: 80px;
+  background-color: #6e6e6e;
+}
+main .container .hangman .holder {
+  position: absolute;
+  left: calc(5% + 100px);
+  top: 60px;
+  height: 40px;
+  width: 4px;
+  background-color: #6e6e6e;
+  display: none;
+}
+main .container .hangman .holder::before {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  bottom: -45px;
+  left: -22.5px;
+  border-radius: 50%;
+  border: 2px dashed #6e6e6e;
+}
+main .container .hangman .body {
+  position: absolute;
+  left: calc(5% + 82px);
+  top: 100px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #6e6e6e;
+  display: none;
+}
+main .container .hangman .body::before {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  height: 50px;
+  width: 4px;
+  transform: translateX(-50%);
+  background-color: #6e6e6e;
+}
+main .container .hangman .body .hands {
+  position: relative;
+  display: none;
+}
+main .container .hangman .body .hands::before,
+main .container .hangman .body .hands::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 40px;
+  top: 30px;
+  left: 18px;
+  background-color: #6e6e6e;
+  transform: rotateZ(45deg);
+  transform-origin: 100% 100%;
+}
+main .container .hangman .body .hands::after {
+  transform: rotateZ(-45deg);
+}
+main .container .hangman .body .legs {
+  position: relative;
+  display: none;
+}
+main .container .hangman .body .legs::before,
+main .container .hangman .body .legs::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 40px;
+  top: 50px;
+  left: 14px;
+  background-color: #6e6e6e;
+  transform: rotateZ(135deg);
+  transform-origin: 100% 100%;
+}
+main .container .hangman .body .legs::after {
+  transform: rotateZ(-135deg);
+}
+main .container .hangman.failed-1 .gallow,
+main .container .hangman.failed-2 .holder,
+main .container .hangman.failed-3 .body, 
+main .container .hangman.failed-4 .body .hands, 
+main .container .hangman.failed-5 .body .legs {
+  display: block;
+}
+main .container .hint {
+  position: absolute;
+  width: fit-content;
+  border: 1px solid #6e6e6e;
+  top: calc(55% - 41px);
+  left: 50%;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #baff39;
+  transform: translateX(-50%);
+}
+main .container .input {
+  position: absolute;
+  left: 45%;
+  top: 90px;
+  height: 30px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+main .container .input span {
+  position: relative;
+  width: 30px;
+  height: 100%;
+  margin: 5px 0px;
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #eee;
+}
+main .container .input span:not(span.space):after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: -10px;
+  background-color: #6e6e6e;
+}
+main .container .input span.space {
+  background-color: #ffffff;
+}
+main .container .input span.space::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 15px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  background-color: #6e6e6e;
+}
+main .container .keyboard {
+  position: absolute;
+  text-align: center;
+  padding: 0px 40px;
+  top: 60%;
+}
+@media (max-width:480px){
+   main .container .keyboard {
+    padding: 0px 10px;
+   }
+}
+main .container .keyboard.clicked {
+  background-color: #eee;
+  opacity: 0.3;
+  pointer-events: none;
+}
+main .container .keyboard .letter-btn {
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border: 1px solid #6e6e6e;
+  border-radius: 6px;
+  cursor: pointer;
+}
+main .container .keyboard .letter-btn.clicked {
+  background-color: #eee;
+  opacity: 0.3;
+  pointer-events: none;
+}
+main .container .keyboard.clicked .letter-btn.clicked {
+  background-color: #fff;
+  opacity: 1;
+}
+main .container .keyboard .letter-btn:hover {
+  background-color: #baff39;
+}
+footer {
+  color: #baff39;
+  background-color: #6e6e6e;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
